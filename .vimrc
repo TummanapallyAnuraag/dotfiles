@@ -16,10 +16,14 @@ Plugin 'c.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'preservim/nerdtree'
-Plugin 'yegappan/taglist'
 Plugin 'vim-airline/vim-airline'
 "Plugin 'craigemery/vim-autotag'
 Plugin 'preservim/nerdcommenter' 
+Plugin 'mg979/vim-visual-multi'
+Plugin 'majutsushi/tagbar'
+Plugin 'jlanzarotta/bufexplorer'
+Plugin 'pboettch/vim-highlight-cursor-words'
+Plugin 'junegunn/vim-easy-align'
 
 "" Themes ""
 Plugin 'sickill/vim-monokai'
@@ -35,15 +39,13 @@ filetype plugin indent on    " required
 if &term == "screen"
 	set t_Co=256
 endif
-let Tlist_auto_open=1
-let tlist_c_settings = 'c;f:function;s:struct'
-let Tlist_Use_Right_Window   = 1
-nnoremap <silent> <F8> :TlistToggle<CR>
 
+nmap <F8> :TagbarToggle<CR>
 
 set number
 set cursorline
 set cursorcolumn
+set hls
 
 "set tags=tags;/
 set tags=./tags;,tags;
@@ -57,6 +59,7 @@ set foldlevel=0
 " set foldclose=all
 
 set tabstop=4
+set shiftwidth=4
 "autocmd VimEnter * NERDTree
 "autocmd VimEnter * wincmd l
 map <C-n> :NERDTreeToggle<CR>
@@ -94,4 +97,41 @@ let g:NERDToggleCheckAllLines = 1
 :map <C-z> <plug>NERDCommenterToggle
 
 
+let g:airline_section_b = ''
+let g:airline_section_y = ''
+
+" tabs to buffers: https://joshldavis.com/2014/04/05/vim-tab-madness-buffers-vs-tabs/
+
+" Change some of the default VIM Diff color scheme
+hi DiffAdd    ctermbg=black ctermfg=green   cterm=reverse
+hi DiffChange ctermbg=black ctermfg=magenta cterm=reverse
+hi DiffDelete ctermbg=black ctermfg=darkred cterm=reverse
+hi DiffText   ctermbg=black ctermfg=cyan    cterm=reverse
+
+" Turn on highlight search and set some highlight cursor word plugin options:
+"   word underneach cursor highlight to be of Search type
+"   delay to be 30 ms
+"set hls
+let g:HiCursorWords_linkStyle='Todo'
+let g:HiCursorWords_delay = 30
+
+" Click on a buffer to switch to it. Yes, with the mouse.
+" A bunch of other mouse behavior works too - you can click to move the insertion point, 
+" drag to select text or resize splits, and use the scroll wheel.
+set mouse+=a
+set ttymouse=xterm2
+
+" In visual mode, show highlighted character count
+set showcmd
+
 set pastetoggle=<F3>
+
+" HELP - 1) vipga= 2) gaip=
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+
+
