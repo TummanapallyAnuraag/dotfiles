@@ -67,7 +67,7 @@ let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
 
 
-set colorcolumn=87
+set colorcolumn=80
 highlight ColorColumn ctermbg=249
 
 "let g:molokai_original = 1
