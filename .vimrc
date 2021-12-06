@@ -24,13 +24,19 @@ Plugin 'majutsushi/tagbar'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'pboettch/vim-highlight-cursor-words'
 Plugin 'junegunn/vim-easy-align'
+" Plugin 'tabnine/YouCompleteMe'
+Plugin 'frazrepo/vim-rainbow'
+Plugin 'mhinz/vim-startify'
 
 "" Themes ""
 Plugin 'sickill/vim-monokai'
 Plugin 'jacoborus/tender.vim'
 Plugin 'morhetz/gruvbox'
 Plugin 'tomasr/molokai'
-
+Plugin 'dracula/dracula-theme'
+Plugin 'gosukiwi/vim-atom-dark'
+Plugin 'mhinz/vim-janah'
+Plugin 'sjl/badwolf'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -60,9 +66,9 @@ set foldlevel=0
 
 set tabstop=4
 set shiftwidth=4
-"autocmd VimEnter * NERDTree
-"autocmd VimEnter * wincmd l
-map <C-n> :NERDTreeToggle<CR>
+" autocmd VimEnter * NERDTree
+" autocmd VimEnter * wincmd l
+" map <C-n> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrowExpandable = ''
 let g:NERDTreeDirArrowCollapsible = ''
 
