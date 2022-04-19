@@ -24,9 +24,10 @@ Plugin 'majutsushi/tagbar'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'pboettch/vim-highlight-cursor-words'
 Plugin 'junegunn/vim-easy-align'
-" Plugin 'tabnine/YouCompleteMe'
 Plugin 'frazrepo/vim-rainbow'
 Plugin 'mhinz/vim-startify'
+Plugin 'skyl/vim-config-python-ide'
+Plugin 'mileszs/ack.vim'
 
 "" Themes ""
 Plugin 'sickill/vim-monokai'
@@ -138,6 +139,11 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" Fugitive Conflict Resolution
+nnoremap <leader>gd :Gvdiff<CR>
+nnoremap gdh :diffget //2<CR>
+nnoremap gdl :diffget //3<CR>
 
 
 
