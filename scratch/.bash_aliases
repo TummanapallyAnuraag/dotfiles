@@ -1,6 +1,6 @@
 ## GIT ##
 alias gits="git status"
-alias gcfdx="git clean -fdx -e tags -e docs/"
+alias gcfdx="git clean -fdx -e tags -e docs/ "
 alias gsu="git submodule update"
 alias gru="git remote update"
 alias grv="git remote -v"
@@ -15,6 +15,15 @@ export EDITOR=vim
 function parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
+
+function home() {
+    cd ~
+    if [[ $TMUX ]]; then
+		# a tmux session is running
+		tmux rename-window "~"
+	fi
+}
+
 function sf() {
 	cd /a/system-firmware
 	if [[ $TMUX ]]; then
@@ -50,13 +59,45 @@ function sje() {
 		tmux rename-window "sje"
 	fi
 }
-function logs() {
-	cd /a/logs
+function rom() {
+	cd /a/k3rom-release
 	if [[ $TMUX ]]; then
 		# a tmux session is running
-		tmux rename-window "logs"
+		tmux rename-window "rom"
 	fi
 }
+function vlab() {
+	cd /a/presilicon-sysfw-dev/simulators/vlab
+	if [[ $TMUX ]]; then
+		# a tmux session is running
+		tmux rename-window "vlab"
+	fi
+}
+
+function logs() {
+	cd /a/logs/picocom
+	if [[ $TMUX ]]; then
+		# a tmux session is running
+		tmux rename-window "pico"
+	fi
+}
+function localhsm() {
+	cd /localhsm
+	if [[ $TMUX ]]; then
+		# a tmux session is running
+		tmux rename-window "localhsm"
+	fi
+}
+function capture_logs() {
+    SOC=am62
+    tmux split-window -h
+    tmux send-keys "logs" C-m
+    tmux send-keys "make log_m4_${SOC}" C-m
+    tmux split-window -v
+    tmux send-keys "logs" C-m
+    tmux send-keys "make log_r5_${SOC}" C-m
+}
+
 export gbr=$( echo $(parse_git_branch) | sed 's/[(,)]//g' )
 alias myip='ip a | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}"'
 alias em="emacs -nw"
@@ -84,6 +125,7 @@ if [[ -z $TMUX ]]; then
     PATH="/a/wbin/:${PATH}"
     PATH="/opt/arm/gcc-arm-9.2-2019.12-x86_64-arm-none-linux-gnueabihf/bin/:${PATH}"
 	PATH="/opt/custom/gcc_latest/bin/:${PATH}"
+	PATH="~/.vim/plugin/:${PATH}"
     export PATH
 fi
 PATH="~/.local/bin/:${PATH}"
@@ -105,10 +147,12 @@ alias clear_logs="rm -f /a/logs/*"
 ## tmux
 #SYSFW="/a/system-firmware"
 #SYSFWT="/a/system-firmware-test"
-SYSFW="/home/vagrant/system-firmware-releases/src/system-firmware"
+# SYSFW="/home/vagrant/system-firmware-releases/src/system-firmware"
 ASYSFW="/a/system-firmware"
-SYSFWT="/home/vagrant/system-firmware-releases/src/system-firmware-test"
+SYSFW="$SYSFW"
+# SYSFWT="/home/vagrant/system-firmware-releases/src/system-firmware-test"
 ASYSFWT="/a/system-firmware-test"
+SYSFW_TEST="$ASYSFWT"
 PDK="/ti/jacinto/workarea/pdk/packages/ti/"
 PDK2="/ti/am62x/workarea/pdk/packages/ti/"
 
@@ -137,4 +181,3 @@ alias ccs="/opt/ccs1040/ccs/eclipse/ccstudio"
 function searchc() {
     grep -irn --include=*.c $1 .
 }
-

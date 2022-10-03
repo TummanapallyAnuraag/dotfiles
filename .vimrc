@@ -8,6 +8,7 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-fugitive'
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
@@ -38,6 +39,8 @@ Plugin 'dracula/dracula-theme'
 Plugin 'gosukiwi/vim-atom-dark'
 Plugin 'mhinz/vim-janah'
 Plugin 'sjl/badwolf'
+Plugin 'lifepillar/vim-solarized8'
+Plugin 'arcticicestudio/nord-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -65,8 +68,8 @@ set foldmethod=syntax
 set foldlevel=0
 " set foldclose=all
 
-set tabstop=4
-set shiftwidth=4
+set tabstop=4 shiftwidth=4 expandtab
+" set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 " autocmd VimEnter * NERDTree
 " autocmd VimEnter * wincmd l
 " map <C-n> :NERDTreeToggle<CR>
